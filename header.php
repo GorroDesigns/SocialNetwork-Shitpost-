@@ -76,9 +76,7 @@ if (isset($_POST["logout"])) {
         <div class="icon__menu">
             <i class="fa fa-bars" id="btn_open"></i>
         </div>
-        <a href="#">
-            <div class="account">Login</div>
-        </a>
+
     </header>
 
     <div class="menu__side" id="menu_side">
