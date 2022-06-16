@@ -1,5 +1,5 @@
 <?php
-session_start();
+include_once("header.php");
 
 if (isset($_POST["logout"])) {
     session_destroy();
@@ -7,7 +7,7 @@ if (isset($_POST["logout"])) {
 $titulo = "Motivaciones.es";
 include_once("header.php");
 ?>
-<?php include_once("header.php"); ?>
+
 
 
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.7.3/tailwind.min.css'>

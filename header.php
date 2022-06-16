@@ -59,13 +59,13 @@ if (isset($_POST["logout"])) {
 
             <a href="login.php" class="log">
                 <?php if (!isset($_SESSION["username"])) {
-                    echo '<button class="btnindex " data-bs-toggle="modal" data-bs-target="#myModal" id="login" name="login">Login</button>';
+                    echo '<button class="btndislike_rate " data-bs-toggle="modal" data-bs-target="#myModal" id="login" name="login">Login</button>';
                 }
                 if (isset($_SESSION["username"])) {
 
                     echo '<form method="post" action="logout.php">
                  <input type="hidden" name="logout" value="1" />
-                 <input class="logout" type="submit" class="btnindex" value="Logout"/> </form>';
+                 <input class="logout" type="submit" class="btndislike_rate" value="Logout"/> </form>';
                 } ?>
             </a>
         </div>
@@ -80,7 +80,7 @@ if (isset($_POST["logout"])) {
     </header>
 
     <div class="menu__side" id="menu_side">
-        <a href="index.php?page=1">
+        <a href="dislike_rate.php?page=1">
             <div class="name__page nuevoBoton">
                 <i class="fa-solid fa-poop"></i>
                 <h4>shitpost.es</h4>
@@ -92,12 +92,20 @@ if (isset($_POST["logout"])) {
                 echo '';
             }
             if (isset($_SESSION["username"])) {
-                echo '<button type="button" class="nuevoBoton" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                <div class="option">
-                <i class="fa-solid fa-circle-plus"></i>
-                <h5>Nuevo post</h5>
-            </div>
-              </button>';
+                // Hide button when is another page
+                if (isset($_GET["page"])) {
+
+                    if ($_GET["page"] == '1 ') {
+                        echo '<button type="button" class="nuevoBoton" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <div class="option">
+                        <i class="fa-solid fa-circle-plus"></i>
+                        <h5>Nuevo post</h5>
+                    </div>
+                     </button>';
+                    } else {
+                        echo '';
+                    }
+                }
             } ?>
 
 
@@ -135,7 +143,7 @@ if (isset($_POST["logout"])) {
 
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabdislike_rate="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -145,15 +153,23 @@ if (isset($_POST["logout"])) {
                 <div class="modal-body">
                     <form action="nuevoPost.php" method="post" runat="server" enctype="multipart/form-data">
                         <div class="form-group ">
+                            <!--  -->
 
-                            <div class="logoContainer">
-                                <img src="http://img1.wikia.nocookie.net/__cb20130901213905/battlebears/images/9/98/Team-icon-placeholder.png">
+
+                            <div class="input-file-container">
+                                <img src="https://i.ibb.co/0Jmshvb/no-image.png" class="image-preview" alt="preview image">
+                                <div class="input-file">
+                                    <button type="button" class="input-file__button">
+                                        <i class="fas fa-upload"></i>
+                                    </button>
+                                    <input type="file" name="upload_file" id="avatarInput">
+                                </div>
+
                             </div>
-                            <div class="fileContainer sprite">
-                                <span>Elige tu ShitPost...</span>
-                                <input name="upload_file" type="file" value="Choose File">
-                            </div>
-                            </br>
+
+                            <!--  -->
+
+
                             </br>
                             <label class="text-center">Mensaje</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>

@@ -1,11 +1,11 @@
 <?php
-session_start();
+include_once("header.php");
 
 if (isset($_POST["logout"])) {
     session_destroy();
 }
 $titulo = "Contactp ShitPost.es";
-include_once("header.php");
+
 ?>
 
 <!-- Contact with Map - START -->

@@ -1,11 +1,11 @@
 <?php
-session_start();
+include_once("header.php");
 
 if (isset($_POST["logout"])) {
     session_destroy();
 }
 $titulo = "SHITPOST";
-include_once "header.php";
+
 include_once "conexionDB.php";
 ?>
 

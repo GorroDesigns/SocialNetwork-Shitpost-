@@ -4,7 +4,7 @@
             <div class="col-3">
                 <div>
 
-
+                    <!-- (SELECT COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user) as likes, (SELECT COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user) as dislikes -->
 
                 </div>
             </div>
@@ -24,13 +24,12 @@
 
             $items_per_page = 3;
             $offset = ($page - 1) * $items_per_page;
-            $consulta1 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user) as likes, (SELECT COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user) as dislikes WHERE post.id_user = login_register.id_login  ORDER BY post.id_post DESC LIMIT " . $offset . "," . $items_per_page;
-            // $consulta2 = "SELECT COUNT(*) AS likes FROM postlikes, post, (SELECT COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user) as dislikes WHERE post.id_user = postlikes.id_user) as likes,";
+            $consulta1 = "SELECT * FROM POST, LOGIN_REGISTER  WHERE post.id_user = login_register.id_login ORDER BY post.id_post DESC LIMIT " . $offset . "," . $items_per_page;
             $resultado = $mysqli->query($consulta1);
-            // $resultado2 = $mysqli->query($consulta2);
-            echo '<div class=" bg-white col-5">
-            ';
+            echo '<div class=" bg-white col-5">';
             while ($fila = $resultado->fetch_assoc()) {
+                // $consulta2 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT post.id_post,COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user ) as likes , (SELECT post.id_post,COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user ) as dislikes WHERE post.id_post = likes.id_post";
+
                 echo '<div class="cardbox shadow-lg">
                 <div class="cardbox-heading">
         <div class="media m-0">
@@ -51,14 +50,14 @@
         <form method="post" action="likeOk.php" class="like">
     <ul>
         <li><a><i class="fa fa-thumbs-up"><input type="submit" name="like" value="hola"/></i></a></li>
-        <li><a><span>' . $fila["likes"] . '</span></a></li>
+        <li><a><span></span></a></li>
        
     </ul>
     </form>
     <form method="post" action="dislikeOk.php" class="like";>
     <ul>
         <li><a><i class="fa fa-thumbs-down"><input type="submit" name="dislike" value="dssa"/></i></a></li>
-        <li><a><span>' . $fila["dislikes"] . '</span></a></li>
+        <li><a><span></span></a></li>
     </ul>
     </form>
             </div>
@@ -166,4 +165,6 @@
             </div>
         </div>
 </section>
+
+
 <!--PAGINAS -->

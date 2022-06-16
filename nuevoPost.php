@@ -21,12 +21,12 @@ if (isset($_POST["upload"])) {
                 if (mysqli_query($mysqli, $insert)) {
                     move_uploaded_file($_FILES["upload_file"]["tmp_name"], "imgPost/$fileName");
                     header("Location: index.php?page=1");
-                } else {
-                    header("Location: index.php?page=1");
                 }
             }
-        } else {
-            header("Location: index.php?page=1");
         }
+    } else {
+        header("Location: index.php?page=1");
     }
+} else {
+    header("Location: index.php?page=1");
 }

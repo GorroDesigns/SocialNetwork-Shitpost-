@@ -1,15 +1,22 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 </script>
 <script>
-    // VISUALIZAR IMAGEN MODAL
-    var loadFile = function(event) {
-        var output = document.getElementById('output');
-        output.src = URL.createObjectURL(event.target.files[0]);
-        output.onload = function() {
-            URL.revokeObjectURL(output.src) // free memory
-        }
-    };
+    // PREVIEW MODAL NUEVOS POSTS
+    const avatarInput = document.querySelector('#avatarInput');
+    const imagePreview = document.querySelector('.image-preview');
+
+    avatarInput.addEventListener('change', e => {
+        let input = e.currentTarget;
+        const fileReader = new FileReader();
+        fileReader.addEventListener('load', e => {
+            let imageData = e.target.result;
+            imagePreview.setAttribute('src', imageData);
+        })
+
+        fileReader.readAsDataURL(input.files[0]);
+    });
 </script>
+
 <footer class="bg-light text-center text-dark">
 
 
