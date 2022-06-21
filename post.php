@@ -1,18 +1,30 @@
+<!-- (SELECT COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user) as likes, (SELECT COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user) as dislikes -->
+<?php $mysqli = new mysqli("localhost", "root", "", "bd_shitpost");
+if ($mysqli->connect_errno) {
+    echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
+}                                                   ?>
 <section class="hero">
     <div class="container">
         <div class="row">
-            <div class="col-3">
-                <div>
-
-                    <!-- (SELECT COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user) as likes, (SELECT COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user) as dislikes -->
-
+            <div class="col-3 tagPopular h-100" data-aos="fade-in">
+                <div class="tagPopular_header">
+                    <i class="fa-solid fa-fire"> </i><span class="tagHeaderSize">TAGS MÁS POPULARES</span>
+                    <div> &nbsp;&nbsp; de + a - recientes.</div>
                 </div>
+
+                <div class="tagBody">
+                    <div>
+                        <?php
+                        $consulta = "SELECT tags FROM POST WHERE tags is not null ORDER BY id_post DESC";
+                        $resultado = $mysqli->query($consulta);
+                        while ($row = $resultado->fetch_assoc()) {
+                            echo '<div class="tag">' . $row["tags"] . '</div>';
+                        } ?>
+                    </div>
+                </div>
+
             </div>
             <?php
-            $mysqli = new mysqli("localhost", "root", "", "bd_shitpost");
-            if ($mysqli->connect_errno) {
-                echo "Fallo al conectar a MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-            }
 
             $page = 1;
             if (!empty($_GET['page'])) {
@@ -22,15 +34,18 @@
                 }
             }
 
-            $items_per_page = 3;
+            $items_per_page = 5;
             $offset = ($page - 1) * $items_per_page;
             $consulta1 = "SELECT * FROM POST, LOGIN_REGISTER  WHERE post.id_user = login_register.id_login ORDER BY post.id_post DESC LIMIT " . $offset . "," . $items_per_page;
             $resultado = $mysqli->query($consulta1);
-            echo '<div class=" bg-white col-5">';
+            echo '
+                <div class="col-6 content">';
             while ($fila = $resultado->fetch_assoc()) {
-                // $consulta2 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT post.id_post,COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user ) as likes , (SELECT post.id_post,COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user ) as dislikes WHERE post.id_post = likes.id_post";
 
-                echo '<div class="cardbox shadow-lg">
+                // $consulta2 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT post.id_post,COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user ) as likes , (SELECT post.id_post,COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user ) as dislikes WHERE post.id_post = likes.id_post";
+                $noseve = '';
+                if (empty(trim($fila["message"]))) $noseve = 'style="display:none";';
+                echo '<div class="cardbox" data-aos="fade-up">
                 <div class="cardbox-heading">
         <div class="media m-0">
         <div class="d-flex mr-3">
@@ -49,19 +64,19 @@
         <div class="cardbox-base like">
         <form method="post" action="likeOk.php" class="like">
     <ul>
-        <li><a><i class="fa fa-thumbs-up"><input type="submit" name="like" value="hola"/></i></a></li>
+        
         <li><a><span></span></a></li>
        
     </ul>
     </form>
     <form method="post" action="dislikeOk.php" class="like";>
     <ul>
-        <li><a><i class="fa fa-thumbs-down"><input type="submit" name="dislike" value="dssa"/></i></a></li>
+  
         <li><a><span></span></a></li>
     </ul>
     </form>
             </div>
-<div class="messagePost">
+<div class="messagePost bg-white"' . $noseve . ' >
 <ul> 
 <li><a><span>' . $fila["message"] . '</span></a> </li>
 </ul>
@@ -75,12 +90,12 @@
 
             ?>
 
-
-
+            <!-- // <li><a><i class="fa fa-thumbs-up"><input type="submit" name="like" value="hola"/></i></a></li> -->
+            <!-- // <li><a><i class="fa fa-thumbs-down"><input type="submit" name="dislike" value="dssa"/></i></a></li> -->
 
             <!--PAGINAS -->
             <?php
-            $total = 3;
+            $total = 5;
             if (isset($_GET["page"])) {
                 $page  = $_GET["page"];
             } else {
@@ -97,7 +112,10 @@
                     <li class="page-item <?php if ($page == 1) {
                                                 echo 'disabled';
                                             } ?>">
-                        <a class="page-link " href="<?php if ($page == 1) {
+                        <a class="page-link " href="<?php
+                                                    // when load index.php go to page 1 when load page
+
+                                                    if ($page == 1) {
                                                         echo '#';
                                                     } else { ?><?php echo $_SERVER['PHP_SELF'] ?>?page=<?php echo $page - 1;
                                                                                                     } ?>" aria-label="Previous">

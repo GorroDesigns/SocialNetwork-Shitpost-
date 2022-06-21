@@ -24,8 +24,7 @@
                 header("Location: index.php?page=1");
             }
         } else {
-            header('Location: errorUsuario.php');
-            session_destroy();
+            header("Location: register.php");
         }
 
         //LOG

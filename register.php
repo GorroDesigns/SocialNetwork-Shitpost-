@@ -4,7 +4,7 @@ include_once("header.php");
 if (isset($_POST["logout"])) {
     session_destroy();
 }
-$titulo = "Motivaciones.es";
+$titulo = "Shitpost";
 include_once("header.php");
 ?>
 
@@ -47,7 +47,7 @@ include_once("header.php");
                                 <div class="ml-5 rounded-md shadow-sm">
                                     <!-- Replace the file input styles with our own via the label -->
                                     <input @change="updatePreview($refs)" x-ref="input" type="file" accept="image/*,capture=camera" name="photo" id="photo" class="custom">
-                                    <label for="photo" class="py-2 px-3 border border-black-300 rounded-md text-sm leading-4 font-medium text-black-700 hover:text-indigo-500 hover:border-indigo-300 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-black-50 active:text-indigo-800 transition duration-150 ease-in-out">
+                                    <label for="photo" class="avatarBtn">
                                         Avatar
                                     </label>
                                 </div>
@@ -121,7 +121,7 @@ include_once("header.php");
         return {
             previewPhoto: originalUrl,
             fileName: null,
-            emptyText: originalUrl ? 'No new file chosen' : 'Imagen de avatar',
+            emptyText: originalUrl ? 'No new file chosen' : 'Selecciona una imagen',
             updatePreview($refs) {
                 var reader,
                     files = $refs.input.files;
@@ -141,4 +141,4 @@ include_once("header.php");
     }
 </script>
 
-<? include "footer.php"; ?>
+<?php include_once "footer.php"; ?>

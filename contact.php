@@ -4,7 +4,7 @@ include_once("header.php");
 if (isset($_POST["logout"])) {
     session_destroy();
 }
-$titulo = "Contactp ShitPost.es";
+$titulo = "Contacto ShitPost";
 
 ?>
 
@@ -13,32 +13,32 @@ $titulo = "Contactp ShitPost.es";
     <div class="row">
         <div class="col-md-6">
             <div>
-                <form class="form-horizontal" method="post" action="datosForm.php">
+                <form class="form-horizontal" action="mailto: gorrodesigns@gmail.com" method=”POST” enctype=”multipart/form-data” name=”EmailForm”>
                     <fieldset>
-                        <legend>Contact us</legend>
+                        <legend>Contactanos</legend>
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="name" name="name" type="text" placeholder="Name or Nickname" class="form-control">
+                                <input id="name" name="name" type="text" placeholder="Nombre" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                                <input id="email" name="email" type="text" placeholder="email@email.com" class="form-control">
                             </div>
                         </div>
 
 
                         <div class="form-group">
                             <div class="col-md-10 col-md-offset-1">
-                                <textarea class="form-control" id="message" name="message" placeholder="¿What do you need?" rows="7"></textarea>
+                                <textarea class="form-control" id="message" name="message" placeholder="¿Qué nesesitas?" rows="7"></textarea>
                             </div>
                         </div>
+                        <div class="col-md-12">
 
-                        <div class="form-group">
-                            <div class="col-md-12">
-                                <button type="submit" class="btn-primary btn-lg fondoColor">Enviar</button>
-                            </div>
+                            </br>
+                            <button type="submit" class=" botonContacto btn-lg ">Enviar</button>
+
                         </div>
                     </fieldset>
                 </form>
@@ -50,7 +50,8 @@ $titulo = "Contactp ShitPost.es";
                     <div class="panel-body text-center">
                         <h4>Donde vivo:</h4>
                         <div class="textoRojo">
-                            Spain<br />
+                            ESPAÑITA<br /></BR>
+                            <h4> Correo de tipo sexy:</h4>
                             gorrodesigns@gmail.com<br />
                             <?php ?>
                         </div>

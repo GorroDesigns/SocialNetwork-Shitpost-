@@ -1,15 +1,4 @@
-<?php
-session_start();
-
-if (isset($_POST["logout"])) {
-    session_destroy();
-}
-$titulo = "Motivaciones.es";
-include_once("header.php");
-?>
-<?php include_once("header.php"); ?>
-
-
+<?php include_once "header.php"; ?>
 
 <div class="container fitPage">
     <div class="row">
@@ -46,3 +35,5 @@ include_once("header.php");
             </div>
         </div>
     </div>
+
+    <?php include_once "footer.php" ?>

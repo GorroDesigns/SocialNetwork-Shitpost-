@@ -11,7 +11,7 @@ if (isset($_POST["logout"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShitPost Web</title>
+    <title>ShitPost</title>
 
     <link rel="stylesheet" href="css/estilos.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -23,13 +23,18 @@ if (isset($_POST["logout"])) {
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
 </head>
 
 <body id="body">
+    <div class="preloader">
+    </div>
     <div class="navbar">
-        <div class="avatarIcon ">
+        <div class="avatarIcon">
+            <a href="index.php?page=1">
+                <div class="logo nuevoBoton">SHITPOST.ES</div>
+            </a>
             <?php
             $mysqli = new mysqli("localhost", "root", "", "bd_shitpost");
             if ($mysqli->connect_errno) {
@@ -80,10 +85,10 @@ if (isset($_POST["logout"])) {
     </header>
 
     <div class="menu__side" id="menu_side">
-        <a href="dislike_rate.php?page=1">
-            <div class="name__page nuevoBoton">
-                <i class="fa-solid fa-poop"></i>
-                <h4>shitpost.es</h4>
+        <a href="index.php?page=1">
+            <div class="nuevoBoton text-center bigCaca">
+                <h3><i class="fa-solid fa-poop"></i></h3>
+
             </div>
         </a>
 
@@ -134,7 +139,7 @@ if (isset($_POST["logout"])) {
             ?>
             <a href="contact.php" class="selected">
                 <div class="option contactoMenu">
-                    <i class="far fa-id-badge" title="Contacto"></i>
+                    <i class="fa-solid fa-circle-info" title="Contacto"></i>
                     <h5>Contacto</h5>
                 </div>
             </a>
@@ -147,7 +152,7 @@ if (isset($_POST["logout"])) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿NUEVO POST?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo post: </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -166,13 +171,13 @@ if (isset($_POST["logout"])) {
                                 </div>
 
                             </div>
-
                             <!--  -->
-
-
                             </br>
-                            <label class="text-center">Mensaje</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+                            <label class="text-center">Mensaje: </label>
+                            <textarea class="form-control" rows="3" name="message"></textarea>
+                            </br>
+                            <label class="text-center">Tag: </label>
+                            <textarea class="form-control" rows="1" name="tag"></textarea>
                         </div>
                         </br>
 
@@ -187,16 +192,6 @@ if (isset($_POST["logout"])) {
     </form>
 
 
-    <script src="js/script.js"></script>
-    <script>
-        $("input:file").change(function() {
-            var fileName = $(this).val();
-            if (fileName.length > 0) {
-                $(this).parent().children(' span').html(fileName);
-            } else {
-                $(this).parent().children('span').html("Choose file");
-            }
-        });
-    </script>
+
 
     <? include "footer.php"; ?>
