@@ -4,7 +4,7 @@ include_once "conexionDB.php";
 if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["email"]) && !empty($_POST["photo"])) {
     if (isset($_POST["username"]) && isset($_POST["password"]) && isset($_POST["email"]) && isset($_POST["photo"])) {
         $usuario = $_POST["username"];
-        $password = $_POST["password"];
+        $password = hash("md5", $_POST["password"], false);
         $email = $_POST["email"];
         $avatar = $_POST["photo"];
         $insert = "INSERT INTO login_register (avatar, username, password, email) VALUES ('$avatar','$usuario', '$password', '$email')";

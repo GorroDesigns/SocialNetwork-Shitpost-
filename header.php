@@ -155,13 +155,11 @@ if (isset($_POST["logout"])) {
                     <h5 class="modal-title" id="exampleModalLabel">Nuevo post: </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body container">
                     <form action="nuevoPost.php" method="post" runat="server" enctype="multipart/form-data">
-                        <div class="form-group ">
+                        <div class="form-group row">
                             <!--  -->
-
-
-                            <div class="input-file-container">
+                            <div class="input-file-container col-6">
                                 <img src="https://i.ibb.co/0Jmshvb/no-image.png" class="image-preview" alt="preview image">
                                 <div class="input-file">
                                     <button type="button" class="input-file__button">
@@ -173,11 +171,19 @@ if (isset($_POST["logout"])) {
                             </div>
                             <!--  -->
                             </br>
-                            <label class="text-center">Mensaje: </label>
-                            <textarea class="form-control" rows="3" name="message"></textarea>
-                            </br>
-                            <label class="text-center">Tag: </label>
-                            <textarea class="form-control" rows="1" name="tag"></textarea>
+                            <div class="col-6">
+
+                                </br>
+                                </br>
+                                <h2 class="text-center"> Info: </h2>
+                                </br>
+                                </br>
+                                <label class="text-center">Mensaje: </label>
+                                <textarea class="form-control" rows="3" name="message"></textarea>
+                                </br>
+                                <label class="text-center">Tag: </label>
+                                <textarea class="form-control" rows="1" name="tag"></textarea>
+                            </div>
                         </div>
                         </br>
 

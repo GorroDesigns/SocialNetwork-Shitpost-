@@ -953,6 +953,11 @@ input[type="file"].custom {
     display: block;
 }
 
+button.btn-close {
+
+    background-color: white !important;
+}
+
 .avatarBtn {
     background-color: #ffffff;
     color: rgb(0, 0, 0);
@@ -1088,6 +1093,19 @@ div.tag {
 
 .tagBody {
     padding: 10px;
+}
+
+.tagPostUser {
+    color: black;
+    position: relative;
+    top: 20px;
+    padding: 5px 10px 5px 10px;
+    background-color: rgb(125, 255, 169);
+    font-family: Comic Sans MS;
+}
+
+div.d-flex.mb-3 {
+    margin-bottom: 0 !important;
 }
 
 .accountTitle {

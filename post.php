@@ -44,12 +44,9 @@ if ($mysqli->connect_errno) {
 
                 // $consulta2 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT post.id_post,COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user ) as likes , (SELECT post.id_post,COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user ) as dislikes WHERE post.id_post = likes.id_post";
                 $noseve = '';
+                $tagHide = '';
                 $cliente = $fila["id_user"];
-                // if (isset($fila["tags"])) {
-                //     $tags = $fila["tags"];
-                // } else {
-                //     $tags = "";
-                // }
+                if (empty(trim($fila["tags"]))) $tagHide = 'style="display:none;"';
                 if (empty(trim($fila["message"]))) $noseve = 'style="display:none";';
                 echo '<div class="cardbox" data-aos="fade-up">
                 <div class="cardbox-heading">
@@ -68,30 +65,24 @@ if ($mysqli->connect_errno) {
     <img class="img-fluid" src="imgPost/' . $fila["file"] . '" alt="Image">
             </div>
         <div class="cardbox-base like">
-        <div class="d-flex bd-highlight mb-3">
-        <div class="p-2 bd-highlight">
-        <ul>
+        <div>
+
+        <div class="d-flex mb-3">
+        <div class="p-2">        <ul>
         <a onclick="like(' . $cliente . ')"><i class="fa-solid fa-thumbs-up"></i></a>
             <li><a><span>' . $fila["like_num"] . '</span></a></li>
            
-        </ul>
-        </div>
-        <div class="p-2 bd-highlight">    <ul>
+        </ul></div>
+        <div class="p-2"><ul>
         <a onclick="dislike()"> <i class="fa-solid fa-thumbs-down"></i></a>
-            <li><a><span>' . $fila["dislike_num"] . '</span></a></li>
-        </div>
- 
+            <li><a><span>' . $fila["dislike_num"] . '</span></a></li></ul></div>
+        <div class="ms-auto p-2"><span class="tagPostUser' . $tagHide . '">' . $fila["tags"] . '</span></div>
       </div>
 
 
 
+      </div>
 
-
- 
-
-
-   
-  
             </div>
 <div class="messagePost bg-white"' . $noseve . ' >
 <ul> 
