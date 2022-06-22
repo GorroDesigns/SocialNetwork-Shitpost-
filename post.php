@@ -6,7 +6,7 @@ if ($mysqli->connect_errno) {
 <section class="hero">
     <div class="container">
         <div class="row">
-            <div class="col-3 tagPopular h-100" data-aos="fade-in">
+            <div class="col-3 tagPopular h-100 sticky" data-aos="fade-in">
                 <div class="tagPopular_header">
                     <i class="fa-solid fa-fire"> </i><span class="tagHeaderSize">TAGS MÁS POPULARES</span>
                     <div> &nbsp;&nbsp; de + a - recientes.</div>
@@ -44,6 +44,12 @@ if ($mysqli->connect_errno) {
 
                 // $consulta2 = "SELECT * FROM POST, LOGIN_REGISTER, (SELECT post.id_post,COUNT(*) AS likes FROM postlikes, post WHERE post.id_user = postlikes.id_user ) as likes , (SELECT post.id_post,COUNT(*) AS dislikes FROM postdislikes,post WHERE post.id_user = postdislikes.id_user ) as dislikes WHERE post.id_post = likes.id_post";
                 $noseve = '';
+                $cliente = $fila["id_user"];
+                // if (isset($fila["tags"])) {
+                //     $tags = $fila["tags"];
+                // } else {
+                //     $tags = "";
+                // }
                 if (empty(trim($fila["message"]))) $noseve = 'style="display:none";';
                 echo '<div class="cardbox" data-aos="fade-up">
                 <div class="cardbox-heading">
@@ -62,19 +68,30 @@ if ($mysqli->connect_errno) {
     <img class="img-fluid" src="imgPost/' . $fila["file"] . '" alt="Image">
             </div>
         <div class="cardbox-base like">
-        <form method="post" action="likeOk.php" class="like">
-    <ul>
-        
-        <li><a><span></span></a></li>
-       
-    </ul>
-    </form>
-    <form method="post" action="dislikeOk.php" class="like";>
-    <ul>
+        <div class="d-flex bd-highlight mb-3">
+        <div class="p-2 bd-highlight">
+        <ul>
+        <a onclick="like(' . $cliente . ')"><i class="fa-solid fa-thumbs-up"></i></a>
+            <li><a><span>' . $fila["like_num"] . '</span></a></li>
+           
+        </ul>
+        </div>
+        <div class="p-2 bd-highlight">    <ul>
+        <a onclick="dislike()"> <i class="fa-solid fa-thumbs-down"></i></a>
+            <li><a><span>' . $fila["dislike_num"] . '</span></a></li>
+        </div>
+ 
+      </div>
+
+
+
+
+
+ 
+
+
+   
   
-        <li><a><span></span></a></li>
-    </ul>
-    </form>
             </div>
 <div class="messagePost bg-white"' . $noseve . ' >
 <ul> 
@@ -90,8 +107,7 @@ if ($mysqli->connect_errno) {
 
             ?>
 
-            <!-- // <li><a><i class="fa fa-thumbs-up"><input type="submit" name="like" value="hola"/></i></a></li> -->
-            <!-- // <li><a><i class="fa fa-thumbs-down"><input type="submit" name="dislike" value="dssa"/></i></a></li> -->
+
 
             <!--PAGINAS -->
             <?php

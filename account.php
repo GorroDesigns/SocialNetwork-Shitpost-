@@ -27,7 +27,7 @@ include_once "conexionDB.php";
                 <div class="cardbox-heading">
                  <div class="media m-0">
                 <div class="media-body">
-             <p class="m-0 text-uppercase botonUsuario">' . $fila["username"] . '</p>
+       
             <small><span><i class="icon ion-md-time"></i> ' . $fila["date"] . '</span></small>
                  </div>
                </div>

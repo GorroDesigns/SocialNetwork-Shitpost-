@@ -619,7 +619,7 @@ li a i input {
 
 .fa-thumbs-up {
     cursor: pointer;
-    font-size: 100px;
+    font-size: 20px;
     color: yellowgreen;
     transition: all 0.2s ease-out;
 }
@@ -627,7 +627,7 @@ li a i input {
 .fa-thumbs-down {
 
     cursor: pointer;
-    font-size: 100px;
+    font-size: 20px;
     color: rgb(151, 0, 0);
     transition: all 0.2s ease;
 }
@@ -966,11 +966,11 @@ input[type="file"].custom {
     padding: 16px 20px;
     border: none;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.4s;
 }
 
 .botonContacto:hover {
-    background-color: #00b170;
+    background-color: rgb(125, 255, 169);
 }
 
 
@@ -984,6 +984,11 @@ input[type="file"].custom {
     position: sticky;
     top: 100px;
 
+}
+
+.tagPost {
+    position: relative;
+    right: 0 !important;
 }
 
 .tagPopular {
@@ -1108,4 +1113,22 @@ div.tag {
 
 .bigCaca {
     padding-top: 35px;
+}
+
+input#name,
+input#email,
+textarea {
+    background-color: rgb(125, 255, 169) !important;
+
+}
+
+input#name,
+input#email,
+textarea:focus {
+    border: solid 2px black !important;
+
+}
+
+.form-control {
+    border-radius: none p !important;
 }

@@ -32,7 +32,7 @@
         }
     });
 </script>
-
+<script src="post.js"></script>
 
 </body>
 
